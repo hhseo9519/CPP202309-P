@@ -1,3 +1,4 @@
+#pragma once
 #include<iostream>
 #include<string>
 using namespace std;
@@ -6,7 +7,7 @@ class Student {
 public:
 	string name;
 	string insta_ID;
-	int gender;
+	int gender = -1;
 	int focal = 30;
 	int conflict = 30;
 	int mind = 30;
@@ -17,4 +18,3 @@ public:
 	void Print_Profile();
 
 };
-
