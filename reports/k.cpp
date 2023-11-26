@@ -11,4 +11,3 @@ Student::Student() {
 void Student::Print_Profile() {
     cout << name << " " << insta_ID << endl;
 }
-//여기의 문제 배열들을 쭉 집어넣자
