@@ -6,16 +6,16 @@
 using namespace std;
 
 int main() {
-	//í”„ë¡œê·¸ë¨ ì°¸ì—¬ ì‹ ì²­ë°›ê¸°
-	cout << "ë§¤ì¹­ í”„ë¡œê·¸ë¨ì— ì°¸ì—¬í•˜ì‹œê² ìŠµë‹ˆê¹Œ?(Y/N) : ";
+	//ÇÁ·Î±×·¥ Âü¿© ½ÅÃ»¹Ş±â
+	cout << "¸ÅÄª ÇÁ·Î±×·¥¿¡ Âü¿©ÇÏ½Ã°Ú½À´Ï±î?(Y/N) : ";
 	char OX;
 	cin >> OX;
 	if (OX != 'y' && OX != 'Y') {
-		cout << "í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•˜ê² ìŠµë‹ˆë‹¤!!";
+		cout << "ÇÁ·Î±×·¥À» Á¾·áÇÏ°Ú½À´Ï´Ù!!";
 		return 0;
 	}
 	else {
-		cout << "í™˜ì˜í•©ë‹ˆë‹¤!" << endl << endl;
+		cout << "È¯¿µÇÕ´Ï´Ù!" << endl << endl;
 	}
 	vector<Student>Profiles;
 	int count = 0;
@@ -24,16 +24,16 @@ int main() {
 	{
 
 		Student student;
-		cout << "ì°¸ì—¬ìì˜ ì •ë³´ë¥¼ ì…ë ¥í•˜ì‹œì˜¤ " << endl;
-		cout << "ì´ë¦„ : ";
+		cout << "Âü¿©ÀÚÀÇ Á¤º¸¸¦ ÀÔ·ÂÇÏ½Ã¿À " << endl;
+		cout << "ÀÌ¸§ : ";
 		cin >> student.name;
-		cout << "ì°¸ì—¬ìì˜ ì¸ìŠ¤íƒ€ ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì‹œì˜¤ : ";
+		cout << "Âü¿©ÀÚÀÇ ÀÎ½ºÅ¸ ¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ½Ã¿À : ";
 		cin >> student.insta_ID;
 		while (true) {
-			cout << "ì°¸ì—¬ìì˜ ì„±ë³„ì„ ì…ë ¥í•˜ì‹œì˜¤ (ë‚¨ìì¼ ê²½ìš° 0, ì—¬ìì¼ ê²½ìš° 1): ";
+			cout << "Âü¿©ÀÚÀÇ ¼ºº°À» ÀÔ·ÂÇÏ½Ã¿À (³²ÀÚÀÏ °æ¿ì 0, ¿©ÀÚÀÏ °æ¿ì 1): ";
 			cin >> student.gender;
 			if (cin.fail()) {
-				cout << "ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤. ìˆ«ìë¥¼ ì…ë ¥í•˜ì„¸ìš”." << endl;
+				cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ¼ıÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä." << endl;
 				cin.clear();
 				cin.ignore(INT_MAX, '\n');
 			}
@@ -41,22 +41,22 @@ int main() {
 				break;
 			}
 			else {
-				cout << "ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤. 0 ë˜ëŠ” 1ì„ ì…ë ¥í•˜ì„¸ìš”." << endl;
+				cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. 0 ¶Ç´Â 1À» ÀÔ·ÂÇÏ¼¼¿ä." << endl;
 			}
 		}
 		cout << endl;
 		count++;
 
 		if (count == 10) {
-			cout << "ë§¤ì¹­ì„ ìœ„í•œ ìµœì†Œí•œì˜ ì¸ì›ì´ ëª¨ë‘ ì±„ì›Œì¡ŒìŠµë‹ˆë‹¤ ê³„ì† ì¸ì›ì„ ì¶”ê°€í•˜ì‹œê² ìŠµë‹ˆê¹Œ?(O/X) :";
+			cout << "¸ÅÄªÀ» À§ÇÑ ÃÖ¼ÒÇÑÀÇ ÀÎ¿øÀÌ ¸ğµÎ Ã¤¿öÁ³½À´Ï´Ù °è¼Ó ÀÎ¿øÀ» Ãß°¡ÇÏ½Ã°Ú½À´Ï±î?(O/X) :";
 			cin >> OX;
 
 			if (OX != 'o' && OX != 'O') {
-				cout << "ì—°ì•  ê²€ì‚¬ë¥¼ ì‹œì‘í•˜ê² ìŠµë‹ˆë‹¤" << endl;
+				cout << "¿¬¾Ö °Ë»ç¸¦ ½ÃÀÛÇÏ°Ú½À´Ï´Ù" << endl;
 				break;
 			}
 			else {
-				cout << "ê³„ì† ì¶”ê°€í•˜ì‹  í›„ ì¢…ë£Œë¥¼ ì›í•˜ì‹œë©´ ì´ë¦„ì— quitì„ ê¸°ì…í•´ì£¼ì„¸ìš”" << endl;
+				cout << "°è¼Ó Ãß°¡ÇÏ½Å ÈÄ Á¾·á¸¦ ¿øÇÏ½Ã¸é ÀÌ¸§¿¡ quitÀ» ±âÀÔÇØÁÖ¼¼¿ä" << endl;
 			}
 		}
 		if (student.name == "quit") {
@@ -69,51 +69,51 @@ int main() {
 	for (int k = 0; k < size(Profiles); k++) {
 
 		int answerCount[5] = { 0 };
-		// ë¬¸ì œì™€ ë‹µë³€ ë°›ê¸°
+		// ¹®Á¦¿Í ´äº¯ ¹Ş±â
 		for (int i = 0; i < 6; ++i) {
 
-			cout << "ë¬¸ì œ " << i + 1 << " ë²ˆ " << endl;
+			cout << "¹®Á¦ " << i + 1 << " ¹ø " << endl;
 
 			cout << strArray[i] << endl;
 
 			int answer;
 			cin >> answer;
 
-			// ìœ íš¨í•œ ë‹µë³€ì¸ì§€ í™•ì¸
+			// À¯È¿ÇÑ ´äº¯ÀÎÁö È®ÀÎ
 			while (answer < 1 || answer > 5) {
-				cout << "ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš” (1~5 ì‚¬ì´ì˜ ìˆ«ì): ";
+				cout << "´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä (1~5 »çÀÌÀÇ ¼ıÀÚ): ";
 				cin >> answer;
 			}
 
-			// ê° ë‹µë³€ì— ëŒ€í•´ ê°œìˆ˜ ì¦ê°€
+			// °¢ ´äº¯¿¡ ´ëÇØ °³¼ö Áõ°¡
 			answerCount[answer - 1]++;
 			if ( i== 5) {
 				Profiles[k].focal = answerCount[0] * (-5) + answerCount[1] * (-3) + answerCount[3] * 3 + answerCount[4] * 5;
 
 			}
 		}
-		//í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•œ ì½”ë“œ
+		//Å×½ºÆ®¸¦ À§ÇÑ ÄÚµå
 		cout << endl;
-		cout << "í…ŒìŠ¤íŠ¸ ê°’ :" << Profiles[0].focal << endl;
+		cout << "Å×½ºÆ® °ª :" << Profiles[0].focal << endl;
 
 		int answerCount2[5] = { 0 };
-		// ë¬¸ì œì™€ ë‹µë³€ ë°›ê¸°
+		// ¹®Á¦¿Í ´äº¯ ¹Ş±â
 		for (int i = 0; i < 6; ++i) {
 
-			cout << "ë¬¸ì œ " << i + 1 << " ë²ˆ " << endl;
+			cout << "¹®Á¦ " << i + 1 << " ¹ø " << endl;
 
 			cout << strArray[i] << endl;
 
 			int answer;
 			cin >> answer;
 
-			// ìœ íš¨í•œ ë‹µë³€ì¸ì§€ í™•ì¸
+			// À¯È¿ÇÑ ´äº¯ÀÎÁö È®ÀÎ
 			while (answer < 1 || answer > 5) {
-				cout << "ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš” (1~5 ì‚¬ì´ì˜ ìˆ«ì): ";
+				cout << "´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä (1~5 »çÀÌÀÇ ¼ıÀÚ): ";
 				cin >> answer;
 			}
 
-			// ê° ë‹µë³€ì— ëŒ€í•´ ê°œìˆ˜ ì¦ê°€
+			// °¢ ´äº¯¿¡ ´ëÇØ °³¼ö Áõ°¡
 			answerCount2[answer - 1]++;
 			if (i==5) {
 				Profiles[k].conflict = answerCount2[0] * (-5) + answerCount2[1] * (-3) + answerCount2[3] * 3 + answerCount2[4] * 5;
@@ -121,23 +121,23 @@ int main() {
 			}
 		}
 		int answerCount3[5] = { 0 };
-		// ë¬¸ì œì™€ ë‹µë³€ ë°›ê¸°
+		// ¹®Á¦¿Í ´äº¯ ¹Ş±â
 		for (int i = 0; i < 6; ++i) {
 
-			cout << "ë¬¸ì œ " << i + 1 << " ë²ˆ " << endl;
+			cout << "¹®Á¦ " << i + 1 << " ¹ø " << endl;
 
 			cout << strArray[i] << endl;
 
 			int answer;
 			cin >> answer;
 
-			// ìœ íš¨í•œ ë‹µë³€ì¸ì§€ í™•ì¸
+			// À¯È¿ÇÑ ´äº¯ÀÎÁö È®ÀÎ
 			while (answer < 1 || answer > 5) {
-				cout << "ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš” (1~5 ì‚¬ì´ì˜ ìˆ«ì): ";
+				cout << "´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä (1~5 »çÀÌÀÇ ¼ıÀÚ): ";
 				cin >> answer;
 			}
 
-			// ê° ë‹µë³€ì— ëŒ€í•´ ê°œìˆ˜ ì¦ê°€
+			// °¢ ´äº¯¿¡ ´ëÇØ °³¼ö Áõ°¡
 			answerCount3[answer - 1]++;
 			if (i == 5) {
 				Profiles[k].mind = answerCount3[0] * (-5) + answerCount3[1] * (-3) + answerCount3[3] * 3 + answerCount3[4] * 5;
@@ -145,23 +145,23 @@ int main() {
 			}
 		}
 		int answerCount4[5] = { 0 };
-		// ë¬¸ì œì™€ ë‹µë³€ ë°›ê¸°
+		// ¹®Á¦¿Í ´äº¯ ¹Ş±â
 		for (int i = 0; i < 6; ++i) {
 
-			cout << "ë¬¸ì œ " << i + 1 << " ë²ˆ " << endl;
+			cout << "¹®Á¦ " << i + 1 << " ¹ø " << endl;
 
 			cout << strArray[i] << endl;
 
 			int answer;
 			cin >> answer;
 
-			// ìœ íš¨í•œ ë‹µë³€ì¸ì§€ í™•ì¸
+			// À¯È¿ÇÑ ´äº¯ÀÎÁö È®ÀÎ
 			while (answer < 1 || answer > 5) {
-				cout << "ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš” (1~5 ì‚¬ì´ì˜ ìˆ«ì): ";
+				cout << "´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä (1~5 »çÀÌÀÇ ¼ıÀÚ): ";
 				cin >> answer;
 			}
 
-			// ê° ë‹µë³€ì— ëŒ€í•´ ê°œìˆ˜ ì¦ê°€
+			// °¢ ´äº¯¿¡ ´ëÇØ °³¼ö Áõ°¡
 			answerCount4[answer - 1]++;
 			if (i== 5) {
 				Profiles[k].date = answerCount4[0] * (-5) + answerCount4[1] * (-3) + answerCount4[3] * 3 + answerCount4[4] * 5;
@@ -169,23 +169,23 @@ int main() {
 			}
 		}
 		int answerCount5[5] = { 0 };
-		// ë¬¸ì œì™€ ë‹µë³€ ë°›ê¸°
+		// ¹®Á¦¿Í ´äº¯ ¹Ş±â
 		for (int i = 0; i < 6; ++i) {
 
-			cout << "ë¬¸ì œ " << i + 1 << " ë²ˆ " << endl;
+			cout << "¹®Á¦ " << i + 1 << " ¹ø " << endl;
 
 			cout << strArray[i] << endl;
 
 			int answer;
 			cin >> answer;
 
-			// ìœ íš¨í•œ ë‹µë³€ì¸ì§€ í™•ì¸
+			// À¯È¿ÇÑ ´äº¯ÀÎÁö È®ÀÎ
 			while (answer < 1 || answer > 5) {
-				cout << "ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš” (1~5 ì‚¬ì´ì˜ ìˆ«ì): ";
+				cout << "´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä (1~5 »çÀÌÀÇ ¼ıÀÚ): ";
 				cin >> answer;
 			}
 
-			// ê° ë‹µë³€ì— ëŒ€í•´ ê°œìˆ˜ ì¦ê°€
+			// °¢ ´äº¯¿¡ ´ëÇØ °³¼ö Áõ°¡
 			answerCount5[answer - 1]++;
 			if (i == 5) {
 				 Profiles[k].proportion = answerCount5[0] * (-5) + answerCount5[1] * (-3) + answerCount5[3] * 3 + answerCount5[4] * 5;
@@ -195,6 +195,6 @@ int main() {
 		}
 
 
-	}//ì´ê±´ ê²€ì‚¬í•˜ëŠ” ì „ì²´ forë¬¸ì˜ ê´„í˜¸
+	}//ÀÌ°Ç °Ë»çÇÏ´Â ÀüÃ¼ for¹®ÀÇ °ıÈ£
 
-}// <----ì´ê±´ int mainì˜ ê´„í˜¸
+}// <----ÀÌ°Ç int mainÀÇ °ıÈ£
