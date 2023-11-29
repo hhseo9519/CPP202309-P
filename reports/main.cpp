@@ -87,7 +87,7 @@ int main() {
 
 			// 각 답변에 대해 개수 증가
 			answerCount[answer - 1]++;
-			if ( i== 5) {
+			if (i == 5) {
 				Profiles[k].focal = answerCount[0] * (-5) + answerCount[1] * (-3) + answerCount[3] * 3 + answerCount[4] * 5;
 
 			}
@@ -115,7 +115,7 @@ int main() {
 
 			// 각 답변에 대해 개수 증가
 			answerCount2[answer - 1]++;
-			if (i==5) {
+			if (i == 5) {
 				Profiles[k].conflict = answerCount2[0] * (-5) + answerCount2[1] * (-3) + answerCount2[3] * 3 + answerCount2[4] * 5;
 
 			}
@@ -163,7 +163,7 @@ int main() {
 
 			// 각 답변에 대해 개수 증가
 			answerCount4[answer - 1]++;
-			if (i== 5) {
+			if (i == 5) {
 				Profiles[k].date = answerCount4[0] * (-5) + answerCount4[1] * (-3) + answerCount4[3] * 3 + answerCount4[4] * 5;
 
 			}
@@ -188,7 +188,7 @@ int main() {
 			// 각 답변에 대해 개수 증가
 			answerCount5[answer - 1]++;
 			if (i == 5) {
-				 Profiles[k].proportion = answerCount5[0] * (-5) + answerCount5[1] * (-3) + answerCount5[3] * 3 + answerCount5[4] * 5;
+				Profiles[k].proportion = answerCount5[0] * (-5) + answerCount5[1] * (-3) + answerCount5[3] * 3 + answerCount5[4] * 5;
 
 
 			}
