@@ -1,4 +1,5 @@
 #include<iostream>
+#include<fstream>
 #include<vector>
 #include<string>
 #include <iterator>
@@ -60,43 +61,44 @@ int main() {
 		cout << "참여자의 인스타 아이디를 입력하시오 : ";
 		cin >> student.insta_ID;
 		while (true) {
-			cout << "참여자의 성별을 입력하시오 (남자일 경우 0, 여자일 경우 1): ";
-			cin >> student.gender;
-			if (cin.fail()) {
-				cout << "잘못된 입력입니다. 숫자를 입력하세요." << endl;
-				cin.clear();
-				cin.ignore(INT_MAX, '\n');
+			try
+			{
+				cout << "참여자의 성별을 입력하시오 (남자일 경우 0, 여자일 경우 1): ";
+				cin >> student.gender;
+				if (student.gender != 0 && student.gender != 1) {
+					throw invalid_argument("0 또는 1을 입력하세요");
+				}
 			}
-			else if (student.gender == 0 || student.gender == 1) {
+			catch (exception& e) {
+				cout << "에러 : " << e.what() << endl;
+			}
+			if (student.gender == 0 || student.gender == 1) {
 				break;
 			}
-			else {
-				cout << "잘못된 입력입니다. 0 또는 1을 입력하세요." << endl;
+			cout << endl;
+			count++;
+
+			if (count == 10) {
+				cout << "매칭을 위한 최소한의 인원이 모두 채워졌습니다 계속 인원을 추가하시겠습니까?(O/X) :";
+				cin >> OX;
+
+				if (OX != 'o' && OX != 'O') {
+					cout << "연애 검사를 시작하겠습니다" << endl;
+					break;
+				}
+				else {
+					cout << "계속 추가하신 후 종료를 원하시면 이름에 quit을 기입해주세요" << endl;
+				}
 			}
-		}
-		cout << endl;
-		count++;
-
-		if (count == 10) {
-			cout << "매칭을 위한 최소한의 인원이 모두 채워졌습니다 계속 인원을 추가하시겠습니까?(O/X) :";
-			cin >> OX;
-
-			if (OX != 'o' && OX != 'O') {
-				cout << "연애 검사를 시작하겠습니다" << endl;
+			if (student.name == "quit") {
 				break;
 			}
-			else {
-				cout << "계속 추가하신 후 종료를 원하시면 이름에 quit을 기입해주세요" << endl;
-			}
+			Profiles.push_back(student);
 		}
-		if (student.name == "quit") {
-			break;
-		}
-		Profiles.push_back(student);
 	}
 	int FINISH_TEST = 0;
 	int num = 0;
-	cout << "테스트를 시작하겠습니다 정보를 입력한 순서대로 검사에 응해주세요!"<< endl;
+	cout << "테스트를 시작하겠습니다 정보를 입력한 순서대로 검사에 응해주세요!" << endl;
 	for (int k = 0; k < size(Profiles); k++) {
 		int a;
 		int answerCount[5] = { 0 };
@@ -262,4 +264,19 @@ int main() {
 	minFocalStudent2.Print_Profile();
 
 
-}// <----이건 int main의 괄호
+	cout << "점수 부여 기준을 알려드리겠습니다" << endl;
+
+	ifstream is{ "Rate Score.txt" }; // 파일명에 .txt 확장자를 사용하는 것이 일반적입니다.
+	if (!is) {
+		cerr << "점수 부여 기준은 비밀입니다!!" << endl;
+		exit(1);
+	}
+
+	string line;
+	while (getline(is, line)) {
+		cout << line << endl;
+	}
+
+	return 0;
+}
+
