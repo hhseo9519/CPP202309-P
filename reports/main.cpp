@@ -243,28 +243,52 @@ int main() {
 
 	// 가장 낮은 focal 값을 가진 두 학생을 저장할 변수
 	Student minFocalStudent1, minFocalStudent2;
-
+	vector<Student> Results;
+	int minIndex1 = -1, minIndex2 = -1;
+	int minValue = INT_MAX;
 	// 모든 학생들에 대한 뺄셈 수행
 	for (int i = 0; i < size(Profiles); ++i) {
 		for (int j = i + 1; j < size(Profiles); ++j) {
 			// i와 j 학생에 대한 뺄셈 수행
 			Student result = Profiles[i] - Profiles[j];
 
+			result.index1 = i;
+			result.index2 = j;
 
-			if (result.focal + result.conflict + result.mind + result.date + result.proportion < Mvalue) {
-				Mvalue = result.value;
-				minFocalStudent1 = Profiles[i];
-				minFocalStudent2 = Profiles[j];
+			Results.push_back(result);
+			//가산점을 부여
+			if (abs(result.focal) <= 20) {
+				result.value -= 5;
 			}
+
+
+			for (int i = 0; i < Results.size(); ++i) {
+				if (Results[i].value < minValue) {
+					minValue = Results[i].value;
+					minIndex1 = Results[i].index1;
+					minIndex2 = Results[i].index2;
+				}
+			}
+
 		}
 	}
 
 	// 결과 출력
 
 	cout << "좋은 커플이 될 수 있는 학생 1: ";
-	minFocalStudent1.Print_Profile();
+	Profiles[minIndex1].Print_Profile();
 	cout << "좋은 커플이 될 수 있는 학생 2: ";
-	minFocalStudent2.Print_Profile();
+	Profiles[minIndex2].Print_Profile();
+
+
+	cout << "다른 좋은커플이 될 수 있는 가능성을 가진 학생들을 알려드리겠습니다!!" << endl;
+
+
+	//테스트용 코드
+	for (int i = 0; i < Results.size(); ++i) {
+		cout << "결과 " << i + 1 << ": 학생 쌍 (" << Results[i].index1 << ", " << Results[i].index2 << ")" << endl;
+	}
+
 
 
 	cout << "점수 부여 기준을 알려드리겠습니다" << endl;
@@ -279,6 +303,7 @@ int main() {
 	while (getline(is, line)) {
 		cout << line << endl;
 	}
+
 
 	return 0;
 }
