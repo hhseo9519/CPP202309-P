@@ -36,19 +36,33 @@ string balance[5] = { "아픈 연인을 위해서 하루종일 옆에 있어주고 싶다",
 "나의 장점을 세가지 이상 말 하기 어렵다" };
 
 int Student::count = 0;
+
+
+
 int main() {
 
-	cout << "매칭 프로그램에 참여하시겠습니까?(Y/N) : ";
 	char OX;
-	cin >> OX;
-	if (OX != 'y' && OX != 'Y') {
-		cout << "프로그램을 종료하겠습니다!!";
+	do {
+		cout << "매칭 프로그램에 참여하시겠습니까? (Y/N): ";
+		cin >> OX;
+
+		if (OX != 'y' && OX != 'Y' && OX != 'n' && OX != 'N') {
+			cout << "유효하지 않은 입력입니다. 다시 입력해주세요." << endl;
+		}
+
+	} while (OX != 'y' && OX != 'Y' && OX != 'n' && OX != 'N');
+
+	if (OX == 'n' || OX == 'N') {
+		cout << "프로그램을 종료하겠습니다!!" << endl;
 		return 0;
 	}
 	else {
 		cout << "환영합니다!" << endl << endl;
+
 	}
+	//학생들을 저장하는 벡터 생성
 	vector<Student>Profiles;
+	//인원수 체크를 위한 변수 생성
 	int county = 0;
 
 	while (true) {
@@ -59,32 +73,49 @@ int main() {
 		cout << "참여자의 인스타 아이디를 입력하시오 : ";
 		cin >> student.insta_ID;
 
+
+
 		while (true) {
 			try {
 				cout << "참여자의 성별을 입력하시오 (남자일 경우 0, 여자일 경우 1): ";
 				cin >> student.gender;
+
+				if (cin.fail()) {
+					throw runtime_error("입력이 올바르지 않습니다. 숫자를 입력하세요.");
+				}
+
 				if (student.gender != 0 && student.gender != 1) {
 					throw invalid_argument("0 또는 1을 입력하세요");
 				}
+
+				break;
 			}
 			catch (exception& e) {
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				cout << "에러 : " << e.what() << endl;
-			}
-
-			if (student.gender == 0 || student.gender == 1) {
-				break;
 			}
 		}
 
-		// Move count++ outside of the inner loop
+
+		cout << "입력받은 성별: " << student.gender << endl;
+
+
 		cout << endl;
 		county++;
 
 		if (county == 10) {
-			cout << "매칭을 위한 최소한의 인원이 모두 채워졌습니다. 계속 인원을 추가하시겠습니까?(O/X) :";
-			cin >> OX;
+			do {
+				cout << "매칭을 위한 최소한의 인원이 모두 채워졌습니다. 계속 인원을 추가하시겠습니까? (O/X): ";
+				cin >> OX;
 
-			if (OX != 'o' && OX != 'O') {
+				if (OX != 'o' && OX != 'O' && OX != 'x' && OX != 'X') {
+					cout << "유효하지 않은 입력입니다. 다시 입력해주세요." << endl;
+				}
+
+			} while (OX != 'o' && OX != 'O' && OX != 'x' && OX != 'X');
+
+			if (OX == 'x' || OX == 'X') {
 				cout << "연애 검사를 시작하겠습니다" << endl;
 				break;
 			}
@@ -96,7 +127,7 @@ int main() {
 		if (student.name == "quit") {
 			break;
 		}
-
+		//학생들의 개인정보 vector에 집어넣기
 		Profiles.push_back(student);
 	}
 	int FINISH_TEST = 0;
@@ -113,12 +144,20 @@ int main() {
 			cout << Focal[i] << endl;
 
 			int answer;
-			cin >> answer;
+			while (true) {
 
-			// 유효한 답변인지 확인
-			while (answer < 1 || answer > 5) {
-				cout << "다시 입력해주세요 (1~5 사이의 숫자): ";
+				cout << "다섯 가지 중 하나를 선택해주세요" << endl;
 				cin >> answer;
+				cout << endl;
+
+				if (cin.fail() || answer < 1 || answer > 5) {
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+					cout << "다시 입력해주세요 (1~5 사이의 숫자): " << endl;
+				}
+				else {
+					break;
+				}
 			}
 
 			// 각 답변에 대해 개수 증가
@@ -128,8 +167,7 @@ int main() {
 
 			}
 		}
-		//테스트를 위한 코드
-		cout << endl;
+
 
 
 		int answerCount2[5] = { 0 };
@@ -141,12 +179,20 @@ int main() {
 			cout << conflict[i] << endl;
 
 			int answer;
-			cin >> answer;
+			while (true) {
 
-			// 유효한 답변인지 확인
-			while (answer < 1 || answer > 5) {
-				cout << "다시 입력해주세요 (1~5 사이의 숫자): ";
+				cout << "다섯 가지 중 하나를 선택해주세요: " << endl;
 				cin >> answer;
+				cout << endl;
+
+				if (cin.fail() || answer < 1 || answer > 5) {
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+					cout << "다시 입력해주세요 (1~5 사이의 숫자): " << endl;
+				}
+				else {
+					break;
+				}
 			}
 
 			// 각 답변에 대해 개수 증가
@@ -165,13 +211,22 @@ int main() {
 			cout << mind[i] << endl;
 
 			int answer;
-			cin >> answer;
+			while (true) {
 
-			// 유효한 답변인지 확인
-			while (answer < 1 || answer > 5) {
-				cout << "다시 입력해주세요 (1~5 사이의 숫자): ";
+				cout << "다섯 가지 중 하나를 선택해주세요: " << endl;
 				cin >> answer;
+				cout << endl;
+
+				if (cin.fail() || answer < 1 || answer > 5) {
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+					cout << "다시 입력해주세요 (1~5 사이의 숫자): " << endl;
+				}
+				else {
+					break;
+				}
 			}
+
 
 			// 각 답변에 대해 개수 증가
 			answerCount3[answer - 1]++;
@@ -189,13 +244,22 @@ int main() {
 			cout << date[i] << endl;
 
 			int answer;
-			cin >> answer;
+			while (true) {
 
-			// 유효한 답변인지 확인
-			while (answer < 1 || answer > 5) {
-				cout << "다시 입력해주세요 (1~5 사이의 숫자): ";
+				cout << "다섯 가지 중 하나를 선택해주세요: " << endl;
 				cin >> answer;
+				cout << endl;
+
+				if (cin.fail() || answer < 1 || answer > 5) {
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+					cout << "다시 입력해주세요 (1~5 사이의 숫자): " << endl;
+				}
+				else {
+					break;
+				}
 			}
+
 
 			// 각 답변에 대해 개수 증가
 			answerCount4[answer - 1]++;
@@ -213,13 +277,22 @@ int main() {
 			cout << balance[i] << endl;
 
 			int answer;
-			cin >> answer;
+			while (true) {
 
-			// 유효한 답변인지 확인
-			while (answer < 1 || answer > 5) {
-				cout << "다시 입력해주세요 (1~5 사이의 숫자): ";
+				cout << "다섯 가지 중 하나를 선택해주세요: " << endl;
 				cin >> answer;
+				cout << endl;
+
+				if (cin.fail() || answer < 1 || answer > 5) {
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+					cout << "다시 입력해주세요 (1~5 사이의 숫자): " << endl;
+				}
+				else {
+					break;
+				}
 			}
+
 
 			// 각 답변에 대해 개수 증가
 			answerCount5[answer - 1]++;
@@ -234,7 +307,7 @@ int main() {
 
 	}//이건 검사하는 전체 for문의 괄호
 	//평가하는 문단 점수 매기고 매칭정도 확인
-	cout << Profiles[0].count << endl;
+	cout << "총 학생 수는 : " << Profiles[0].count << endl;
 
 	cout << "매칭 결과 분석중입니다" << endl;
 
@@ -255,26 +328,26 @@ int main() {
 			result.index1 = i;
 			result.index2 = j;
 
-			Results.push_back(result);
-			//가산점을 부여
+			// 가산점을 부여
 			if (abs(result.focal) <= 20) {
 				result.value -= 5;
 			}
 
+			// percentage 계산 수정
+			result.percentage = (50 - result.value) * 2.0;
 
-			for (int i = 0; i < Results.size(); ++i) {
-				if (Results[i].value < minValue) {
-					minValue = Results[i].value;
-					minIndex1 = Results[i].index1;
-					minIndex2 = Results[i].index2;
-				}
-			}
-
+			Results.push_back(result);
 		}
 	}
 
 	// 결과 출력
-
+	for (int i = 0; i < Results.size(); ++i) {
+		if (Results[i].value < minValue) {
+			minValue = Results[i].value;
+			minIndex1 = Results[i].index1;
+			minIndex2 = Results[i].index2;
+		}
+	}
 	cout << "좋은 커플이 될 수 있는 학생 1: ";
 	Profiles[minIndex1].Print_Profile();
 	cout << "좋은 커플이 될 수 있는 학생 2: ";
@@ -282,13 +355,14 @@ int main() {
 
 
 	cout << "다른 좋은커플이 될 수 있는 가능성을 가진 학생들을 알려드리겠습니다!!" << endl;
+	cout << "좋은 커플이 될 확률이 70% 이상인 학생들의 정보:" << endl;
 
-
-	//테스트용 코드
-	for (int i = 0; i < Results.size(); ++i) {
-		cout << "결과 " << i + 1 << ": 학생 쌍 (" << Results[i].index1 << ", " << Results[i].index2 << ")" << endl;
+	//70퍼 이상의 학생들 출력
+	for (int i = 0; i < ((Profiles[0].count) * (Profiles[0].count - 1) / 2); i++) {
+		if (Results[i].percentage > 70) {
+			cout << Results[i].index1 << "과" << Results[i].index2 << endl;
+		}
 	}
-
 
 
 	cout << "점수 부여 기준을 알려드리겠습니다" << endl;
@@ -303,6 +377,8 @@ int main() {
 	while (getline(is, line)) {
 		cout << line << endl;
 	}
+
+
 
 
 	return 0;

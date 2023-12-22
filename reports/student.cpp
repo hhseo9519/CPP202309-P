@@ -13,15 +13,17 @@ Student::Student() {
     count++;
 }
 Student Student::operator-(const Student& other) const {
-    // name과 insta_ID는 문자열로서 뺄셈의 의미가 없으므로 무시합니다.
-    return Student(name, insta_ID,
-        focal - other.focal,
-        conflict - other.conflict,
-        mind - other.mind,
-        date - other.date,
-        proportion - other.proportion);
+    Student result;
+    result.name1 = this->name;
+    result.name2 = other.name;
+    result.focal = this->focal - other.focal;
+    result.conflict = this->conflict - other.conflict;
+    result.mind = this->mind - other.mind;
+    result.date = this->date - other.date;
+    result.proportion = this->proportion - other.proportion;
+    result.value = abs(result.focal) + abs(result.conflict) + abs(result.mind) + abs(result.date) + abs(result.proportion);
+    return result;
 }
 void Student::Print_Profile() {
     cout << name << " " << insta_ID << endl;
 }
-//여기의 문제 배열들을 쭉 집어넣자
